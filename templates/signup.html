@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Registro | Mantenimiento y Pruebas de Software</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% load bootstrap5 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+</head>
+
+<body>
+<!--  -->
+    <div class="container-md">
+        <div class="row">
+            <div class="col-xl-4 col-lg-6 col-sm-8 mx-auto">
+                <div class="card">
+                    
+                    <form action="{% url 'signup_control' %}" method="post" class="text-center needs-validation">
+                        
+                        {% csrf_token %}
+
+                        <h2>Regístrate</h2>
+                        <p>Crea una cuenta en nuestra plataforma</p>
+                        <div class="form-floating mt-4 mb-1">
+                            <input type="text" class="form-control form-control-sm " id="email" placeholder="Ingresa un nombre de usuario" id="htmluser" name="htmluser">
+                            <label for="htmluser">Nombre de usuario</label>
+                        </div>
+                        <div class="invalid-feedback mb-3 {% if user_exists %}show{% endif %}">El usuario {{ req_user }} ya existe. Prueba otro notmbre</div>
+
+                        <div class="form-floating my-4">
+                            <input type="password" class="form-control form-control-sm" placeholder="Ingresa una contraseña" id="htmlpass" name="htmlpass">
+                            <label for="htmlpass">Contraseña</label>
+                        </div>
+
+                        <p class="my-4">Ya tienes una cuenta? <a href="{% url 'login_render' %}">Ingresa aquí.</a></p>
+
+                        <input type="submit" value="Crear cuenta" class="btn btn-primary form-control form-control-lg">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+<!--  -->
+</body>
+</html>
+

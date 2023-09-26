@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Inicio de Sesión | Mantenimiento y Pruebas de Software</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% load bootstrap5 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+</head>
+
+<body>
+<!--  -->
+    <div class="container-md">
+        <div class="row">
+            <div class="col-xl-4 col-lg-6 col-sm-8 mx-auto">
+
+                    {%if signup_redirect %}
+                    <div class="alert alert-success">            
+                        <strong>Listo!</strong> Tu cuenta ha sido creada correctamente.
+                        <button  type="button" class="btn-close ml-5" data-bs-dismiss="alert"></button>
+                    </div> 
+                    {% endif %}
+                <div class="card">
+
+                    <form action="{% url 'login_control' %}" method="post" class="text-center needs-validation">
+
+                        {% csrf_token %}
+
+                        <h2>Inicia Sesión</h2>
+                        <p>Ingresa tus datos para acceder a la plataforma</p>
+                        <div class="form-floating mt-4 mb-1">
+                            <input type="text" class="form-control form-control-sm" id="email" placeholder="Ingresa tu nombre de usuario" id="htmluser" name="htmluser">
+                            <label for="htmluser">Nombre de usuario</label>
+                        </div>
+                        <div class="invalid-feedback mb-3 {% if no_such_user%}show{% endif %}">El usuario {{ req_user }} no existe!</div> 
+
+                        <div class="form-floating mt-4 mb-1">
+                            <input type="password" class="form-control form-control-sm" placeholder="Ingresa tu contraseña" id="htmlpass" name="htmlpass">
+                            <label for="htmlpass">Contraseña</label>
+                        </div>
+                        <div class="invalid-feedback mb-3 {% if incorrect_credentials%}show{% endif %}">Esta contraseña no es correcta!</div>
+
+                        <p class="my-4">Primera vez con nosotros? <a href="{% url 'signup_render' %}">Crea una cuenta.</a></p>
+
+                        <input type="submit" value="Iniciar sesión" class="btn btn-primary form-control form-control-lg">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+<!--  -->
+</body>
+</html>

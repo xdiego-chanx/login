@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Feed ({{req_user}}) | Mantenimiento y Pruebas de Software</title>
+        {% load bootstrap5 %}
+        {% bootstrap_css %}
+        {% bootstrap_javascript %}
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'styles.css' %}">
+    </head>
+    <body>
+        <!-- ///// -->
+        <header class="d-flex flex-row justify-content-between align-items-center w-100 bg-primary text-white py-4 px-5">
+            <h1>Mantenimiento y Pruebas de Software</h1>
+            <div class="profile d-flex flex-row justify-content-between align-items-center">
+                <h5>User: {{req_user}}</h5>
+            </div>
+        </header>
+        <!-- ///// -->
+       </body>
+</html>
