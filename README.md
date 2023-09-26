@@ -5,8 +5,8 @@ Realizar un login para luego verificarlo con pruebas unitarias y de caja blanca,
 
 ### Dependencias a instalar:
 
-- Django
-- Coverage
-- Django Bootstrap v5
+- Django: pip install django
+- Coverage: pip install coverage
+- Django Bootstrap v5: pip install django-bootstrap-v5
 
 
